@@ -1,0 +1,19 @@
+{
+  "name": "sample-flycapture2-addon",
+  "version": "1.0.9",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean"
+  },
+  "gypfile": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-addon-api": "^1.7.1",
+    "node-gyp": "^5.0.4"
+  }
+}

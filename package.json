@@ -1,6 +1,6 @@
 {
   "name": "sample-flycapture2-addon",
-  "version": "1.2.0",
+  "version": "1.2.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,22 @@
   "gypfile": true,
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "node-addon-api": "^1.7.1",
     "node-gyp": "^5.0.4"
+  },
+  "keywords": [
+    "flycapture2",
+    "gp3",
+    "gazepoint",
+    "pointgrey",
+    "pointgrey camera",
+    "node-gyp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guripong/Sample-flycapture2.git"
   }
+
 }

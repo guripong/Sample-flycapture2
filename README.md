@@ -1,32 +1,35 @@
-﻿#Flycapture2  sdk is wrapped on Node JS by ADDON
-
-***
-- 2019-10-01  Success to get Image by node.js <bmp format> 
-- 2019-10-22  Copy dll file to XXX.node 's location  
-***
-
-
+﻿# Flycapture2 SDK wrapped  
+You can get image at GP3 device.  
+# Configuration  
+OS : Windows 10  
+node --version : 10.16.3  
+[node-gyp configuration] must finish  before using this module.  
+you can learn about node-gyp at here.  
+https://www.npmjs.com/package/node-gyp  
+# Warning  
+GP3 device can not share capture images  
 # How to Use?
 
 ```
 const flycapture2 = require('sample-flycapture2-addon');
-
-
-
-//If you success to connect,you can get your pointgreycamera serial number  (
+//If you success to connect,
+//you can get your pointgreycamera serial number
 var myresults1 = flycapture2.ConnectCamera();
 console.log("get serialnumber:" + myresults1);
 
 if(myresults1)
 {
    setTimeout(function () {
-      var imagearray;
-      imagearray = flycapture2.CaptureCamera(); //jpg image captured array
+      var imagearray; 
+      //image array are captured by jpg format 
+      imagearray = flycapture2.CaptureCamera();
+
       var buffer1 = new Buffer.alloc(imagearray.length);
       var uint8 = new Uint8Array(imagearray);
       buffer1.set(uint8);
       buffer1 = buffer1.toString('base64');
-      //console.log(buffer1);  //buffer1 is base64 rawdata (jpg)
+      //console.log(buffer1);  
+      //buffer1 is base64 rawdata (jpg)
 
       require("fs").writeFile("out.jpg",buffer1, 'base64', function (err) {
          console.log(err);

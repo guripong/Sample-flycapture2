@@ -8,6 +8,7 @@ int count = 0;
 Camera *tempcamera;
 bool iscameraconnected = false;
 int capturecount = 0;
+int myserialnumber=0;
 unsigned char fixedimage[360960];
 
 
@@ -292,7 +293,7 @@ int connectcamera()
 	if (iscameraconnected)
 	{
 	//	std::cout << "alerdy connect" << std::endl;
-		return 2;
+		return myserialnumber;
 	}
 	else
 	{
@@ -341,7 +342,9 @@ int connectcamera()
 			return 0;
 		}
 		iscameraconnected = true;
-		return 1;
+		myserialnumber = camInfo.serialNumber; 
+		return camInfo.serialNumber;
+		//return 1;
 	}
 
 	/*
@@ -492,9 +495,9 @@ Napi::Number connectcameraWrapped(const Napi::CallbackInfo &info)
 	LPCTSTR filename3 = TEXT("image_created3.bmp");
 	SaveBitmapToFile(abc, 752, 480, 24, 0, filename3);
 	*/
-	connectcamera();
+	int a = connectcamera();
 
-	return Napi::Number::New(env, 1);
+	return Napi::Number::New(env, a);
 	/*
 	//#################Do not Delete very Important###################################
 	if you want to return raw data, you should set return type to [Napi::Value]

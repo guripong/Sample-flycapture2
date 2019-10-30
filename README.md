@@ -11,15 +11,15 @@ GP3 device can not share capture images
 # How to Use?
 
 ```
-const flycapture2 = require('sample-flycapture2-addon');
+const flycapture2 = require('flycapture2-sdk');
 //If you success to connect,
 //you can get your pointgreycamera serial number
-var myresults1 = flycapture2.ConnectCamera();
-console.log("get serialnumber:" + myresults1);
+var serialnumber = flycapture2.ConnectCamera();
+console.log("get serialnumber:" + serialnumber);
 
-if(myresults1)
-{
-   setTimeout(function () {
+if(myresults1){
+
+  setTimeout(function () {
       var imagearray; 
       //image array are captured by jpg format 
       imagearray = flycapture2.CaptureCamera();
@@ -31,14 +31,16 @@ if(myresults1)
       //console.log(buffer1);  
       //buffer1 is base64 rawdata (jpg)
 
-      require("fs").writeFile("out.jpg",buffer1, 'base64', function (err) {
+      require("fs").writeFile("out.jpg",buffer1, 'base64', 
+      function (err) {
          console.log(err);
       });
 
       var myresults3 = flycapture2.DisConnectCamera();
       console.log("camera disconnect:" + myresults3);
 
-   }, 100); //For capturing image , need more time until connectcamera 
+  }, 100);
+  //For capturing image , need more time until connectcamera 
 }
 
 ```
